@@ -15,9 +15,8 @@ function buildChart(sample) {
         //Build bar chart
 
         var barChartData = [
-            {
-                y:otu_ids
-                x:sample_values
+            {   x:sample_values[0:9],
+                y:otu_ids[0:9],
                 type:"bar",
                 orientation: "h",
             }
@@ -27,6 +26,21 @@ function buildChart(sample) {
                 title: "Bar Chart Title",
 
         };
+        
         Plotly.newPlot("bar", barChartData, barChartStyle);
+
+        var bubbleChartData = {
+                x: otu_ids,
+                y: sample_values,
+                mode:"markers",
+            };
+
+        var bubbleChartStyle = {
+
+            title:"No. Bacteria Cultures per Sample"
+            xaxis:{title:"OTU_ID"}
+            yaxis:{title:"Number"}
+            hovermode:"closest"
+        }
     }   
 }
