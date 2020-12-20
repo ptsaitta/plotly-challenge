@@ -1,7 +1,7 @@
 //load 'metadata' data
 
 function buildMetadata(sample) {
-    d3.json("../../samples.json").then((data) => {
+    d3.json("samples.json").then((data) => {
         var metadata = data.metadata;
         var results = metadata.filter(sampleEntry => sampleEntry.id == sample);
         var result = results[0];
@@ -26,7 +26,7 @@ function buildMetadata(sample) {
 
 function buildChart(sample) {
     //load in data from json file and assign vars
-    d3.json("../../samples.json").then((data) => {
+    d3.json("samples.json").then((data) => {
         var samples = data.samples;
         var results = samples.filter(sampleEntry => sampleEntry.id == sample);
         var result = results[0];
@@ -81,7 +81,7 @@ function buildChart(sample) {
 function init() {
 //          <select id="selDataset" onchange="optionChanged(this.value)"></select>
 // Need to select on this element
-    var selection = d3.select("#selDataset")
+    var selection = d3.select("#selDataset");
 
     //populate select options
     d3.json("../../samples.json").then((data) => {
