@@ -1,3 +1,17 @@
+//load 'metadata' data
+
+function buildMetadata(sample) {
+    d3.json("../../samples.json").then((data) => {
+        var metadata = data.metadata;
+        var results = metadata.filter(sampleEntry => sampleEntry.id == sample);
+        var result = results[0];
+
+        //want to select <div id="sample-metadata" class="panel-body"></div>
+
+        var resultTile = d3.select("#sample-metadata")
+}
+
+
 //load in data to use to build charts
 
 function buildChart(sample) {
@@ -17,30 +31,39 @@ function buildChart(sample) {
         var barChartData = [
             {   x:sample_values[0:9],
                 y:otu_ids[0:9],
+                text: otu_labels[0:9],
                 type:"bar",
                 orientation: "h",
             }
         ];
 
         var barChartStyle = {
-                title: "Bar Chart Title",
+                title: "Bacteria Top Ten",
 
         };
         
         Plotly.newPlot("bar", barChartData, barChartStyle);
 
-        var bubbleChartData = {
+        //Build bubble chart
+
+        var bubbleChartData = [
+            {
                 x: otu_ids,
                 y: sample_values,
                 mode:"markers",
-            };
+            }
+        ];
 
         var bubbleChartStyle = {
 
-            title:"No. Bacteria Cultures per Sample"
-            xaxis:{title:"OTU_ID"}
-            yaxis:{title:"Number"}
-            hovermode:"closest"
+            title:"No. Bacteria Cultures per Sample",
+            xaxis:{title:"OTU_ID"},
+            yaxis:{title:"Number"},
+            hovermode:"closest",
         }
+
+        Plotly.newPlot("bubble", bubbleChartData, bubbleChartStyle);
     }   
 }
+
+
