@@ -13,7 +13,7 @@ function buildMetadata(sample) {
         //want to append each result to something in this tile
 
         Object.entries(result).forEach(([key, value]) => {
-            resultTile.append().text(key + " : " + value);
+            resultTile.append("h5").text(key + " : " + value);
         }
         );
 }
@@ -73,4 +73,22 @@ function buildChart(sample) {
     }   
 }
 
+//initialize
+
+function init() {
+//          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+// Need to select on this element
+    var selection = d3.select("#selDataset")
+
+
+    d3.json("../../samples.json").then((data) => {
+        var names = data.names;
+    
+        names.forEach((sample) => {
+            selection.append().text(sample).property("value", sample);
+        }
+        
+        );
+    }
+}
 
