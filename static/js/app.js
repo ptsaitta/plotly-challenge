@@ -40,7 +40,7 @@ function buildChart(sample) {
 
         var barChartData = [
             {   x:sample_values.slice(0,9), //references dict items properly
-                y:otu_ids.slice(0,9),
+                y:otu_ids.slice(0,9).map(ID => `otu_ID ${ID}`),
                 text: otu_labels.slice(0,9),
                 type:"bar",
                 orientation: "h",
@@ -84,7 +84,7 @@ function init() {
     var selection = d3.select("#selDataset");
 
     //populate select options
-    d3.json("../../samples.json").then((data) => {
+    d3.json("samples.json").then((data) => {
         var names = data.names;
     
         names.forEach((sample) => {
