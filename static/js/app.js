@@ -8,7 +8,10 @@ function buildMetadata(sample) {
 
         //want to select <div id="sample-metadata" class="panel-body"></div>
 
-        var resultTile = d3.select("#sample-metadata")
+        var resultTile = d3.select("#sample-metadata");
+
+        //clear previous metadata text
+        resultTile.html("");
 
         //want to append each result to something in this tile
 
@@ -80,15 +83,22 @@ function init() {
 // Need to select on this element
     var selection = d3.select("#selDataset")
 
-
+    //populate select options
     d3.json("../../samples.json").then((data) => {
         var names = data.names;
     
         names.forEach((sample) => {
-            selection.append().text(sample).property("value", sample);
-        }
-        
-        );
-    }
+            selection.append("option").text(sample).property("value", sample);
+        });
+
+
+        //create initial plots with first sample
+        var initialSample = names[0];
+        buildMetadata(initialSample);
+        buildChart(initialSample);
+    });
 }
 
+
+//run initiation
+init();
