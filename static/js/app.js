@@ -16,11 +16,17 @@ function buildChart(sample) {
 
         var barChartData = [
             {
-                y:
-                x:
+                y:otu_ids
+                x:sample_values
                 type:"bar",
                 orientation: "h",
             }
-        ]
+        ];
+
+        var barChartStyle = {
+                title: "Bar Chart Title",
+
+        };
+        Plotly.newPlot("bar", barChartData, barChartStyle);
     }   
 }
