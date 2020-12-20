@@ -9,6 +9,13 @@ function buildMetadata(sample) {
         //want to select <div id="sample-metadata" class="panel-body"></div>
 
         var resultTile = d3.select("#sample-metadata")
+
+        //want to append each result to something in this tile
+
+        Object.entries(result).forEach(([key, value]) => {
+            resultTile.append().text(key + " : " + value);
+        }
+        );
 }
 
 
