@@ -39,9 +39,9 @@ function buildChart(sample) {
         //Build bar chart
 
         var barChartData = [
-            {   x:sample_values[0:9],
-                y:otu_ids[0:9],
-                text: otu_labels[0:9],
+            {   x:sample_values.slice(0,9), //references dict items properly
+                y:otu_ids.slice(0,9),
+                text: otu_labels.slice(0,9),
                 type:"bar",
                 orientation: "h",
             }
@@ -107,5 +107,5 @@ function optionChanged(newSelection) {
     buildMetadata(newSelection);
 }
 
-//run initiation
+//run initialization
 init();
