@@ -99,6 +99,13 @@ function init() {
     });
 }
 
+//update data when new selection is made
+//<select id="selDataset" onchange="optionChanged(this.value)"></select>
+
+function optionChanged(newSelection) {
+    buildChart(newSelection);
+    buildMetadata(newSelection);
+}
 
 //run initiation
 init();
