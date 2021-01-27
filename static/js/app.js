@@ -19,6 +19,7 @@ function buildMetadata(sample) {
             resultTile.append("h5").text(key + " : " + value);
         }
         );
+});
 }
 
 
@@ -39,9 +40,9 @@ function buildChart(sample) {
         //Build bar chart
 
         var barChartData = [
-            {   x:sample_values.slice(0,9), //references dict items properly
-                y:otu_ids.slice(0,9).map(ID => `otu_ID ${ID}`),
-                text: otu_labels.slice(0,9),
+            {   x:sample_values.slice(0,10), //references dict items properly
+                y:otu_ids.slice(0,10).map(ID => `otu_ID ${ID}`),
+                text: otu_labels.slice(0,10),
                 type:"bar",
                 orientation: "h",
             }
@@ -70,10 +71,10 @@ function buildChart(sample) {
             xaxis:{title:"OTU_ID"},
             yaxis:{title:"Number"},
             hovermode:"closest",
-        }
+        };
 
         Plotly.newPlot("bubble", bubbleChartData, bubbleChartStyle);
-    }   
+    });   
 }
 
 //initialize
