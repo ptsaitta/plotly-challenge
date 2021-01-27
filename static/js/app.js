@@ -56,12 +56,14 @@ function buildChart(sample) {
         Plotly.newPlot("bar", barChartData, barChartStyle);
 
         //Build bubble chart
-
+        //I was going to change the color theme, but I both like and think it's apt that theyre kinda skin tone colored
+        
         var bubbleChartData = [
             {
                 x: otu_ids,
                 y: sample_values,
                 mode:"markers",
+                marker: { size: sample_values, color: otu_ids} 
             }
         ];
 
